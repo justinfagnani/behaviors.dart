@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>example</title>
+    <link rel="import" href="packages/polymer/polymer.html">
+  </head>
+ 
+  <body>
+  
+    <polymer-element name="selectable-example">
+      <template>
+        <style>
+          :host {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            border: solid 1px black;
+          }
+          div {
+            background: #eee;
+            border: solid 2px #888;
+            height: 100px;
+            margin: 10px;
+            padding: 0;
+            -webkit-user-select: none;
+          }
+          div.selected {
+            background: #ccf;
+          }
+          div code {
+            color: white;
+            background: #888;
+            padding: 2px;
+          }
+        </style>
+        <h1>Selectable Example</h1>
+        <p>
+          These &lt;div&gt;s are selectable because of the presence of the <code>selectable</code> attribute.
+        </p>
+        <div selectable><code>&lt;div selectable&gt;</code></div>
+        <div selectable><code>&lt;div selectable&gt;</code></div>
+      </template>
+    </polymer-element>
+    
+    <polymer-element name="movable-example">
+      <template>
+        <style>
+          :host {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            border: solid 1px black;
+            position: relative;
+            height: 600px;
+          }
+          div {
+            background: #eee;
+            border: solid 2px #888;
+            height: 100px;
+            margin: 10px;
+            padding: 0;
+            -webkit-user-select: none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+          }
+          div.moving {
+            background: #ccf;
+          }
+          div code {
+            color: white;
+            background: #888;
+            padding: 2px;
+          }
+        </style>
+        <h1>Movable Example</h1>
+        <p>
+          These &lt;div&gt;s are movable because of the presence of the
+          <code>movable</code> attribute. The movable attribute and the checkbox
+          below are bound to the <code>lock</code> field, so that when
+          the box is checked, the movable attribute is removed causing the
+          Movable behavior to be detached and the <code>div</code>s to no longer
+          be movable. This demonstrates that behaviors are dynamically attached
+          and detached to elements as the DOM changes.
+        </p>
+        <p>
+          Lock: <input type="checkbox" checked="{{ lock }}">
+        </p>
+        <div movable?="{{ !lock }}" style="top: 180px; left: 100px"><code>&lt;div{{ lock ? '' : ' movable' }}&gt;</code></div>
+        <div movable style="top: 180px; left: 400px"><code>&lt;div{{ lock ? '' : ' movable' }}&gt;</code></div>
+      </template>
+    </polymer-element>
+    
+    <selectable-example></selectable-example>
+    <movable-example></movable-example>
+    
+    <script type="application/dart;component=1" src="example.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+    
+  </body>
+</html>
