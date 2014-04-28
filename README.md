@@ -9,10 +9,9 @@ elements via public APIs - listening to events and reading and writing
 properties. Examples of behaviors include selectability, drag and drop,
 or input validation.
 
-`Behavior` is the interface or base class for Behaviors. It has a named
-constructor `Behavior.attach` that takes the element the behavior is attached
-to. It then has a single method `detach` that's called when the behavior should
-clean up.
+`Behavior` is the interface or base class for Behaviors. The `Behavior` 
+constructor takes the element the behavior is attached to. It then has a 
+single method `detach` that's called when the behavior should clean up.
  
 `registerBehavior` registers a CSS selector with a `BehaviorFactory` function
 for a specific node. Using the active_query package, the node is monitored for
